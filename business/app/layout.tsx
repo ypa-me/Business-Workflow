@@ -50,8 +50,9 @@ export default function RootLayout({
     />
   </div>
   <div>
-    <Link href="https://www.upwork.com/freelancers/~01dad57f09646f0483" className=" absolute  bg-white/1 right-0 top-0 font-mono text-xs w-auto h-auto text-center p-2 backdrop-blur-0.5 border border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6),0_0_20px_rgba(0,0,0,0.4)] ring-1 ring-white/5 ring-inset rounded-md overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:bg-green-500/50 hover:border-white/30 hover:backdrop-blur-xl hover:shadow-2xl hover:shadow-green-500/20">
-        Work With Me 
+    <Link href="/authentication?redirect=/contact" className=" absolute  bg-white text-black right-0 top-0 font-mono text-xs w-auto h-auto text-center p-2 backdrop-blur-0.5 border border-white/20 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6),0_0_20px_rgba(0,0,0,0.4)] ring-1 ring-white/5 ring-inset rounded-md overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:bg-green-500/50 hover:border-white/30 hover:backdrop-blur-xl hover:shadow-2xl hover:shadow-green-500/20"
+    >
+        Contact us
       </Link>
   </div>
 </header>
