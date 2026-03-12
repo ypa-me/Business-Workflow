@@ -1,14 +1,13 @@
 'use client';
 import pb from "@/lib/pocketbase";
-import { useState } from "react";
-
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface AuthProps {
     redirectTo?: string;
 }
 
-export default function Authentication({ redirectTo = "/contact" }: AuthProps) {
+function AuthForm({ redirectTo = "/contact" }: AuthProps) {
     const searchParams = useSearchParams();
     const destination = searchParams.get("redirect") ?? redirectTo;
     const [email, setEmail] = useState("");
@@ -23,7 +22,6 @@ export default function Authentication({ redirectTo = "/contact" }: AuthProps) {
         setError("");
         try {
             await pb.collection("users").authWithPassword(email, password);
-            
             router.push(destination);
         } catch (err) {
             setError("Invalid email or password");
@@ -69,7 +67,7 @@ export default function Authentication({ redirectTo = "/contact" }: AuthProps) {
                 placeholder="Password"
             />
             <button
-                className="text-white bg-black font-mono text-xs p-2 border border-white/20 rounded-md transition-all duration-300 hover:scale-[1.02]"
+                className="text-white bg-black font-sans text-xs p-2 border border-white/20 rounded-md transition-all duration-300 hover:scale-[1.02]"
                 onClick={() => isSignup ? handleSignup() : handleLogin()}
                 disabled={loading}
             >
@@ -83,5 +81,13 @@ export default function Authentication({ redirectTo = "/contact" }: AuthProps) {
             </button>
             {error && <p className="text-red-500">{error}</p>}
         </div>
+    );
+}
+
+export default function Authentication(props: AuthProps) {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <AuthForm {...props} />
+        </Suspense>
     );
 }
