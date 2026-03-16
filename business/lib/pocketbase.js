@@ -1,4 +1,4 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://pocketbase.mora-hirajoshi.ts.net:8090');
+const pb = new PocketBase(process.env.POCKETBASE_URL);
 export default pb;
