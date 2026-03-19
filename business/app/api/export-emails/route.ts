@@ -28,5 +28,3 @@ export async function POST(req: Request) {
         return Response.json({ ok: false, error: String(err) }, { status: 500 });
     }
 }
-console.log("PB_URL:", process.env.POCKETBASE_URL);
-console.log("PB_EMAIL:", process.env.PB_SUPERUSER_EMAIL ? "EXISTS" : "MISSING");
